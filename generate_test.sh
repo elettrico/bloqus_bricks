@@ -4,7 +4,7 @@
 # the file define a lua array to be used with add_simple_node function
 
 # create an array with all the filer/dir inside ~/myDir
-arr=(./textures/*)
+arr=(./textures/*.png)
 
 echo "function get_simple_nodes() " > test.lua
 echo "simple_nodes = {" >> test.lua
