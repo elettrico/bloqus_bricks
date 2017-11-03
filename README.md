@@ -11,4 +11,13 @@ Minetest mod for adding fancy bricks blocks
   * "test_" will be added to the node name
   so "something-very-good.png" will become a node "something very good" identified by "test_something_very_good"
 
-
+in init.lua find this lines and comment the dofile (this will prevent loading real blocks)
+```
+-- load real nodes
+dofile(modpath.."/bricks.lua")
+```
+and then uncomment this dofile (this will load test nodes)
+```
+-- load *test* nodes
+-- dofile(modpath.."/test.lua")
+```
