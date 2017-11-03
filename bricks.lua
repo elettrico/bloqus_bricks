@@ -32,7 +32,7 @@ simple_nodes = {
     {"romboid plates", "romboid_plates", "plates_romboids", ""},
     {"circular plates", "circular_plates", "plates_circular", ""},
     {"irregular plates", "irregular_plates", "plates_irregular", ""},
-    
+
     {"rocks 1", "rocks_1", "rocks1", ""},
     {"rocks 2", "rocks_2", "rocks2", ""},
     {"rocks 3", "rocks_3", "rocks3", ""},
@@ -76,28 +76,29 @@ simple_nodes = {
 
 -- generate nodes
 
-for _, row in ipairs(simple_nodes) do
-    local desc = row[1] 
-    local name = row[2]  
-    local texture_side = row[3] 
-    local texture_updown = row[4]
-    if texture_updown == "" then
-        texture_updown = texture_side
+function add_simple_nodes(simple_nodes) {
+    for _, row in ipairs(simple_nodes) do
+        local desc = row[1]
+        local name = row[2]
+        local texture_side = row[3]
+        local texture_updown = row[4]
+        if texture_updown == "" then
+            texture_updown = texture_side
+        end
+        -- node
+        minetest.register_node(modname..":"..name, {
+            description = desc,
+            tiles = {
+                texture_updown..".png",
+                texture_updown..".png",
+                texture_side..".png",
+                texture_side..".png",
+                texture_side..".png",
+                texture_side..".png",
+            },
+            groups = {cracky=1},
+            paramtype = "light",
+            paramtype2 = "facedir",
+        })
     end
-    -- node
-    minetest.register_node(modname..":"..name, {
-        description = desc,
-        tiles = {
-            texture_updown..".png",
-            texture_updown..".png",
-            texture_side..".png",
-            texture_side..".png",
-            texture_side..".png",
-            texture_side..".png",
-        },
-        groups = {cracky=1},     
-        paramtype = "light",
-        paramtype2 = "facedir",      
-    })
 end
-
