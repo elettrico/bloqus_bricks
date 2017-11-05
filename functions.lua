@@ -3,7 +3,12 @@
 -- generic functions
 
 -- generate nodes within using an array
--- array format: node description, node name, node side texture, node up and down texture
+-- array format: 
+--   1: node description, 
+--   2: node name, 
+--   3: node side texture, 
+--   4: node up and down texture or "" (in this case side texture is used)
+--   5: if 1, register node with stairsplus
 
 function add_simple_nodes(simple_nodes)
     for _, row in ipairs(simple_nodes) do

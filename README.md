@@ -18,9 +18,10 @@ If you wish to use generate_test.sh for testing other textures or in other mods,
 * launch ./generate_test.sh
 * a file called test.lua is generated: it define a function returning an array of nodes, using the filename of every texture as a base, doing some basic operations:
   * ".png" will be removed
+  * if the filename ends with "-sp", "-sp" is removed in node name and description, and the node is registered with stairsplus
   * "-" will become space in description and _ in node name
   * "test_" will be added to the node name
-  so "something-very-good.png" will become a node "something very good" identified by "bloqus_bricks:test_something_very_good"
+so "something-very-good.png" will become a node "something very good" identified by "bloqus_bricks:test_something_very_good", and "something-sloppy-sp.png" will become a node "something sloppy" identified by "bloqus_bricks:test_something_sloppy" and is registered with stairsplus so you can use it in saw and have slopes, etc
 non-png files will be ignored
 
 in init.lua find this lines and comment the dofile (this will prevent loading real blocks)
