@@ -33,6 +33,7 @@ function add_simple_nodes(simple_nodes)
             },
             groups = {cracky=1},
             paramtype = "light",
+            paramtype2 = "facedir"
         }
         -- node name
         local nodename = modname..":"..name

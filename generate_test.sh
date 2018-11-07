@@ -6,26 +6,53 @@
 # create an array with all the .png files inside textures
 arr=(./textures/*.png)
 
-echo "function get_simple_nodes() " > test.lua
-echo "simple_nodes = {" >> test.lua
+# destination
+DEST=bricks.lua
+
+echo "function get_simple_nodes() " > $DEST
+echo "simple_nodes = {" >> $DEST
 
 # iterate through array using a counter
 for f in "${arr[@]}"; do
+    BLOCK=""
+    SP=0
+    # take basename and split it at underscore, format is like this: register-name_spflag_block-description.png 
     FILE=`basename "$f" .png`
-    if [[ "$FILE" == *-sp ]] 
+    IFS=_ read -ra arr <<< "$FILE"
+    REGISTERNAME=${arr[0]}
+    REGISTERSP=${arr[1]}
+    BLOCKDESC=${arr[2]}
+
+    # if the filename contains the sp flag, put up the flag for registering with stairs plus
+    if [[ "$REGISTERSP" -eq "1" ]] 
     then
-        BASE=${FILE//-sp/}
         SP=1
-    else
-        BASE=$FILE
-        SP=0
     fi
-    BLOCK=${BASE//-/_}
-    NAME=${BASE//-/ }
-    echo '{"'$NAME'","'test_$BLOCK'","'$FILE'","",'$SP'}, ' >> test.lua
-    echo '{"'$NAME'","'test_$BLOCK'","'$FILE'","",'$SP'}, '
+    # change "-" to "_" in registername
+    REGISTERNAME=${REGISTERNAME//-/_}
+    # si no tenemos nombre, usamos el base
+    if [[ -z "$BLOCKDESC" ]]
+    then
+        BLOCKDESC=${REGISTERNAME//-/ }
+    else
+        BLOCKDESC=${BLOCKDESC//-/ }
+    fi
+    echo
+    echo "registering '$f' as:"
+    echo "    file basename...: $FILE"
+    echo "    node description: $BLOCKDESC"
+    echo "    node name.......: $REGISTERNAME"
+    echo "    stairs plus.....: $REGISTERSP -> $SP"
+    LINE="{\"$BLOCKDESC\",\"$REGISTERNAME\",\"$FILE\",\"\",\"$SP\"}, "
+    echo "    $LINE"
+    # --   1: node description, 
+    # --   2: node name, 
+    # --   3: node side texture, 
+    # --   4: node up and down texture or "" (in this case side texture is used)
+    # --   5: if 1, register node with stairsplus
+    echo $LINE >> $DEST
 done
 
-echo "}" >> test.lua
-echo "return simple_nodes" >> test.lua
-echo "end" >> test.lua
+echo "}" >> $DEST
+echo "return simple_nodes" >> $DEST
+echo "end" >> $DEST

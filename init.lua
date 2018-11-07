@@ -9,9 +9,9 @@ modpath = minetest.get_modpath(modname)
 -- include basic nodes files
 dofile(modpath.."/functions.lua")
 -- load *test* nodes
-dofile(modpath.."/test.lua")
+-- dofile(modpath.."/test.lua")
 -- load real nodes
--- dofile(modpath.."/bricks.lua")
+dofile(modpath.."/bricks.lua")
 
 
 -- register simple nodes

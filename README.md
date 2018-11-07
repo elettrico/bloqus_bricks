@@ -5,7 +5,7 @@ Minetest mod for adding fancy bricks blocks
 Simply copy inside mods directory and enable it
 
 ### files
-* init.lua: ba
+* init.lua: base file, load others
 * functions.lua: collection of useful functions
 * bricks.lua: nodes definitions
 * test.lua: nodes definitions used during develpment for testing, normally unused
@@ -21,6 +21,7 @@ If you wish to use generate_test.sh for testing other textures or in other mods,
   * if the filename ends with "-sp", "-sp" is removed in node name and description, and the node is registered with stairsplus
   * "-" will become space in description and _ in node name
   * "test_" will be added to the node name
+
 so "something-very-good.png" will become a node "something very good" identified by "bloqus_bricks:test_something_very_good", and "something-sloppy-sp.png" will become a node "something sloppy" identified by "bloqus_bricks:test_something_sloppy" and is registered with stairsplus so you can use it in saw and have slopes, etc
 non-png files will be ignored
 

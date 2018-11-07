@@ -1,104 +1,33 @@
--- see LICENSE.txt
---
--- add nodes for basic materials
-
--- define simple nodes (no complex textures, light and facedir params)
-local simple_nodes = {}
-
--- format: node description, node name, node side texture, node up and down texture
+function get_simple_nodes() 
 simple_nodes = {
-    {"blue bricks"      , "blue_bricks"   , "bricks_blue"   , ""},
-    {"chipped bricks"   , "chipped_bricks", "bricks_chipped", ""},
-    {"dark green bricks", "dark_green_bricks", "bricks_dark_green", ""},
-    {"oblique bricks"   , "oblique_bricks", "bricks_oblique", ""},
-    {"square bricks"    , "square_bricks" , "bricks_square", ""},
-    {"vertical stone bricks" , "vertical_stone_bricks", "bricks_vertical_stone", ""},
-    {"natural bricks"   , "natural_bricks", "bricks_natural", ""},
-    {"old bricks"       , "old_bricks"    , "bricks_old", ""},
-    {"blue square bricks","blue_square_bricks", "bricks_square_blue", ""},
-
-    {"tiled blocks"  , "tiled_blocks"  , "tiled_blocks"  , ""},
-    {"rusty concrete", "rusty_concrete", "rusty_concrete_wall"  , "concrete"},
-    {"klinker"       , "klinker"       , "klinker", ""},
-    {"path"          , "path"          , "path", ""},
-    {"little columns", "little_columns", "little_columns", ""}, -- need a top texture
-
-    {"blue cobble" , "blue_cobble", "cobble_blue", ""},
-    {"color cobble", "color_cobble", "cobble_color", ""},
-    {"stones cobble","stones_cobble","cobble_stones", ""},
-
-    {"copper plates" , "copper_plates", "plates_copper", ""},
-    {"hexagon plates", "hexagon_plates", "plates_hexagon", ""},
-    {"romboid plates", "romboid_plates", "plates_romboids", ""},
-    {"circular plates", "circular_plates", "plates_circular", ""},
-    {"irregular plates", "irregular_plates", "plates_irregular", ""},
-
-    {"rocks 1", "rocks_1", "rocks1", ""},
-    {"rocks 2", "rocks_2", "rocks2", ""},
-    {"rocks 3", "rocks_3", "rocks3", ""},
-    {"rocks 4", "rocks_4", "rocks4", ""},
-    {"rocks 5", "rocks_5", "rocks5", ""},
-
-    {"decorative circles"   , "decorative_circles", "decorative_circles", ""},
-    {"decorative rectangles", "decorative_rectangles", "decorative_rectangles", ""},
-
-    {"brown marble"          , "brown_marble", "marble_brown", ""},
-    {"white and brown marble", "wb_marble", "marble_white_brown", ""},
-
-    {"bolted metal"      , "bolted_metal", "metal_bolted", ""},
-    {"metal rusted plate", "metal_rusted_plate", "metal_rusted_plate", ""},
-    {"rusty metal"       , "rusty_metal", "metal_rusty", ""},
-    {"metal plates dark" , "metal_plates_dark", "metal_plates_dark", ""},
-    {"ventilation grid"  , "ventilation_grid", "ventilation_grid", ""},
-
-    {"blue and white mosaic"   , "mosaic_blue_white", "mosaic_blue_white", ""},
-    {"diamonds mosaic"         , "diamonds_mosaic", "mosaic_diamonds", ""},
-    {"green squares mosaic"    , "green_squares_mosaic", "mosaic_squares_green", ""},
-    {"sun mosaic"              , "sun_mosaic", "mosaic_sun", ""},
-    {"black and white mosaic"  , "bw_mosaic", "mosaic_bw", ""},
-
-    {"mossy damaged concrete", "mossy_damaged_concrete", "mossy_damaged_concrete", ""},
-    {"mossy tiles"           , "mossy_tiles", "mossy_tiles", ""},
-    {"mossy bricks"          , "mossy_bricks", "mossy_bricks", ""},
-
-    {"basalt stones"      , "basalt_stones", "stone_basalt", ""},
-    {"damaged brown stone", "damaged_brown_stone", "stone_brown_damaged", ""},
-    {"brown stones"       , "brown_stones", "stone_brown", ""},
-    {"colored stones"     , "colored_stones", "stone_colored", ""},
-    {"composite stones"   , "composite_stones", "stone_composite", ""},
-    {"grassy stones 1"    , "grassy_stones_1", "stone_grassy_1", ""},
-    {"grassy stones 2"    , "grassy_stones_2", "stone_grassy_2", ""},
-    {"circular stones"    , "circular_stones", "stone_circular", ""},
-    {"tundra stone"       , "tundra_stone", "stone_tundra", ""},
-
-    {"wall with plants", "wall_plants", "wall_plants", ""},
+{"bricks 1h 3v linear red","br13li_red","br13li-red_1_bricks-1h-3v-linear-red","","1"},
+{"bricks 2h 1v linear grey 2964b","br21li_grey","br21li-grey_1_bricks-2h-1v-linear-grey-2964b","","1"},
+{"bricks 2h 2v linear blue c3023","br22li_blue","br22li-blue_0_bricks-2h-2v-linear-blue-c3023","","0"},
+{"bricks 2h 2v linear dark c3033","br22li_dark","br22li-dark_1_bricks-2h-2v-linear-dark-c3033","","1"},
+{"bricks 2h 2v","br22li_grey","br22li-grey_1_bricks-2h-2v_linear-grey-c2807-sp","","1"},
+{"bricks 2h 4v linear blue","br24li_blue","br24li-blue_1_bricks-2h-4v-linear-blue","","1"},
+{"bricks 2h 6v linear brown black c2441","br26li_brown","br26li-brown_0_bricks-2h-6v-linear-brown-black-c2441","","0"},
+{"bricks 2h 6v linear white c2348","br26li_white","br26li-white_0_bricks-2h-6v-linear-white-c2348","","0"},
+{"bricks 3h 10v decorative red blue c2852b","br310de_red","br310de-red_0_bricks-3h-10v-decorative-red-blue-c2852b","","0"},
+{"bricks 3h 10v linear red blue c2852a","br310li_redblue","br310li-redblue_0_bricks-3h-10v-linear-red-blue-c2852a","","0"},
+{"bricks 3h 1v linear grey","br31li_grey","br31li-grey_1_bricks-3h-1v-linear-grey","","1"},
+{"bricks 3h 2v grey 2964","br32li_grey","br32li-grey_1_bricks-3h-2v-grey-2964","","1"},
+{"bricks 3h 3v chipped red","br33ch_red","br33ch-red_0_bricks-3h-3v-chipped-red","","0"},
+{"bricks 3h 3v composite c0238","br33co_multi","br33co-multi_1_bricks-3h-3v-composite-c0238","","1"},
+{"bricks 3h 3v linear red old","br33li_red","br33li-red_1_bricks-3h-3v-linear-red-old","","1"},
+{"bricks 3h 3v square red blue","br33sq_redblue","br33sq-redblue_1_bricks-3h-3v-square-red-blue","","1"},
+{"bricks 3h 4v linear red c2377","br34li_red","br34li-red_1_bricks-3h-4v-linear-red-c2377","","1"},
+{"bricks 3h 4v linear red blue c2399","br34li_redblue","br34li-redblue_0_bricks-3h-4v-linear-red-blue-c2399","","0"},
+{"bricks 3h 7v linear red c2663","br37li_red","br37li-red_0_bricks-3h-7v-linear-red-c2663","","0"},
+{"bricks 4h 4v chipped red","br44ch_red","br44ch-red_1_bricks-4h-4v-chipped-red","","1"},
+{"bricks 4h 4v square blue","br44sq_blue","br44sq-blue_1_bricks-4h-4v-square-blue","","1"},
+{"bricks 4h 4v square red c3028b","br44sq_red","br44sq-red_1_bricks-4h-4v-square-red-c3028b","","1"},
+{"bricks 4h 8v linear blue c2710","br48li_blue","br48li-blue_1_bricks-4h-8v-linear-blue-c2710","","1"},
+{"bricks 4h 8v linear red c0207","br48li_red","br48li-red_0_bricks-4h-8v-linear-red-c0207","","0"},
+{"bricks 4h 8v linear red blue c2371","br48li_redblue","br48li-redblue_0_bricks-4h-8v-linear-red-blue-c2371","","0"},
+{"bricks 5h 2v linear red","br52li_red","br52li-red_1_bricks-5h-2v-linear-red","","1"},
+{"bricks 5v 5h chipped dark green","br55ch_green","br55ch-green_0_bricks-5v-5h-chipped-dark-green","","0"},
+{"bricks 7h7v square red c3028","br77sq_red","br77sq-red_1_bricks-7h7v-square-red-c3028","","1"},
 }
-
--- generate nodes
-
-function add_simple_nodes(simple_nodes) {
-    for _, row in ipairs(simple_nodes) do
-        local desc = row[1]
-        local name = row[2]
-        local texture_side = row[3]
-        local texture_updown = row[4]
-        if texture_updown == "" then
-            texture_updown = texture_side
-        end
-        -- node
-        minetest.register_node(modname..":"..name, {
-            description = desc,
-            tiles = {
-                texture_updown..".png",
-                texture_updown..".png",
-                texture_side..".png",
-                texture_side..".png",
-                texture_side..".png",
-                texture_side..".png",
-            },
-            groups = {cracky=1},
-            paramtype = "light",
-            paramtype2 = "facedir",
-        })
-    end
+return simple_nodes
 end
